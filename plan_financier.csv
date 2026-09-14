@@ -1,0 +1,42 @@
+Catégorie,Poste,N,N+1,N+2,N+3,N+4
+Investissement,"Station de travail ML (GPU)",350000,0,0,0,0
+Investissement,"Serveur edge / on-prem",250000,0,0,0,0
+Investissement,"Équipement bureau",200000,0,0,0,0
+Investissement,"Déplacements prospection",150000,0,0,0,0
+Investissement,"Frais juridiques (CNRC, 1275)",100000,0,0,0,0
+Investissement,"Licences logicielles",50000,0,0,0,0
+Investissement,TOTAL,1100000,0,0,0,0
+Amortissement cumulé,TOTAL,220000,440000,660000,880000,1100000
+Investissement net,Investissement - Amortissement,880000,660000,440000,220000,0
+Salaires,CEO/Fondateur (effectif),1,1,1,1,1
+Salaires,CEO/Fondateur (masse annuelle),720000,763200,808992,857532,908984
+Salaires,Lead ML engineer (effectif),1,1,1,1,1
+Salaires,Lead ML engineer (masse annuelle),600000,636000,674160,714610,757486
+Salaires,Business developer (effectif),0,1,1,1,1
+Salaires,Business developer (masse annuelle),0,540000,572400,606744,643149
+Salaires,Ingénieur déploiement (effectif),0,0,1,2,3
+Salaires,Ingénieur déploiement (masse annuelle),0,0,480000,1017600,1617984
+Salaires,EFFECTIF TOTAL,2,3,4,5,6
+Salaires,MASSE SALARIALE TOTALE,1320000,1939200,2535552,3196486,3927603
+Charges,Infrastructure technique (cloud),240000,312000,405600,527280,685464
+Charges,"Fournitures, consommables bureau",60000,78000,101400,131820,171366
+Charges,Internet / électricité / maintenance,120000,156000,202800,263640,342732
+Charges,Marketing et déplacements,300000,390000,507000,659100,856830
+Charges,CHARGES HORS SALAIRES,720000,936000,1216800,1581840,2056392
+Charges,CHARGES TOTALES (incl. salaires),2040000,2875200,3752352,4778326,5983995
+Revenu,Track A - Lignes (vente directe),1,3,6,10,15
+Revenu,Track A - Prix unitaire (DZD),100000,200000,200000,200000,200000
+Revenu,Track A - CA,100000,600000,1200000,2000000,3000000
+Revenu,Track B - Lignes (via revendeur),0,0,5,30,80
+Revenu,Track B - Prix de gros (DZD),0,0,100000,100000,100000
+Revenu,Track B - CA,0,0,500000,3000000,8000000
+Revenu,CA TOTAL,100000,600000,1700000,5000000,11000000
+Revenu,LIGNES TOTALES SERVIES,1,3,11,40,95
+Compte de résultat,Production (= CA),100000,600000,1700000,5000000,11000000
+Compte de résultat,Services extérieurs,720000,936000,1216800,1581840,2056392
+Compte de résultat,Valeur ajoutée,-620000,-336000,483200,3418160,8943608
+Compte de résultat,Charges de personnel,1320000,1939200,2535552,3196486,3927603
+Compte de résultat,Excédent brut d'exploitation,-1940000,-2275200,-2052352,221674,5016005
+Compte de résultat,Amortissements,220000,220000,220000,220000,220000
+Compte de résultat,Résultat d'exploitation,-2160000,-2495200,-2272352,1674,4796005
+Compte de résultat,Résultat de l'exercice,-2160000,-2495200,-2272352,1674,4796005

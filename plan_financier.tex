@@ -1,0 +1,288 @@
+% =====================================================================
+% PolySense Analytics — Plan financier prévisionnel (5 ans, en DZD)
+% =====================================================================
+% Schéma identique au plan d'ENDAKI (6 tableaux liés) :
+%   1. Investissement + amortissement cumulé + net
+%   2. Tableau d'amortissement (linéaire sur 5 ans)
+%   3. Masse salariale (4 rôles, +6 %/an)
+%   4. Charges d'exploitation (incl. salaires)
+%   5. Chiffre d'affaires (2 tracks : direct + revendeur)
+%   6. Compte de résultat (5 ans)
+%
+% Hypothèses clés (à ajuster) :
+%   - Modèle de revenu : licence annuelle par ligne d'extrusion
+%   - Prix catalogue : 200 000 DZD/ligne/an
+%   - Pilote N (offert -50 %) : 100 000 DZD/ligne
+%   - Track A (vente directe Algérie)  : 1, 3, 6, 10, 15 lignes
+%   - Track B (revendeur, N+2+)       : 0, 0, 5, 30, 80 lignes
+%   - Total lignes N→N+4              : 1, 3, 11, 40, 95
+%   - Salaires startup-grade 1275     : 40-60 k DZD/mois
+%   - Croissance salariale            : +6 %/an
+% =====================================================================
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+
+\definecolor{tablehead}{HTML}{1F4E79}
+\definecolor{tabletot}{HTML}{2E75B6}
+\definecolor{tablesub}{HTML}{DEEBF7}
+\definecolor{tablewhite}{HTML}{FFFFFF}
+
+\newcommand{\thead}[1]{\rowcolor{tablehead}\color{tablewhite}\bfseries #1}
+\newcommand{\trow}[1]{\rowcolor{tablesub}}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries\color{blue!70!black} PolySense Analytics\\[2mm]}
+{\large Plan financier prévisionnel — 5 ans (N, N+1, N+2, N+3, N+4)}\\[2mm]
+{\small Devise : DZD (dinar algérien) \quad | \quad Modèle : licence annuelle par ligne d'extrusion}
+\end{center}
+
+\section{Tableau 1 — Investissement et amortissement cumulé}
+
+\begin{center}
+\small
+\begin{longtable}{l r r r r r r r}
+\toprule
+ & & \multicolumn{5}{c}{\textbf{PRÉVISIONS}} & \\
+\cmidrule(lr){3-7}
+\textbf{Liste des investissements, en DZD TTC} & \textbf{Qté} & \textbf{P.U.} & \textbf{N} & \textbf{N+1} & \textbf{N+2} & \textbf{N+3} & \textbf{N+4} \\
+\midrule
+\endhead
+
+Station de travail ML (GPU)        & 1 & 350\,000 & 350\,000 & --    & --    & --    & -- \\
+Serveur edge / on-prem             & 1 & 250\,000 & 250\,000 & --    & --    & --    & -- \\
+Équipement bureau (mobilier)       & 1 & 200\,000 & 200\,000 & --    & --    & --    & -- \\
+Déplacements prospection/pilote    & 1 & 150\,000 & 150\,000 & --    & --    & --    & -- \\
+Frais juridiques (CNRC, dossier 1275) & 1 & 100\,000 & 100\,000 & --    & --    & --    & -- \\
+Divers (licences logicielles)       & 1 & 50\,000  & 50\,000  & --    & --    & --    & -- \\
+\midrule
+\rowcolor{tabletot}\color{white}\bfseries
+INVESTISSEMENT GLOBAL BRUT          &   &          & 1\,100\,000 & 0 & 0 & 0 & 0 \\
+\rowcolor{tabletot}\color{white}\bfseries
+AMORTISSEMENT CUMULÉ                &   &          &   220\,000 &   440\,000 &   660\,000 &   880\,000 & 1\,100\,000 \\
+\rowcolor{tabletot}\color{white}\bfseries
+INVESTISSEMENT GLOBAL NET           &   &          &   880\,000 &   660\,000 &   440\,000 &   220\,000 & 0 \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\noindent\textit{Note :} amortissement linéaire sur 5 ans (20\,\%/an), conforme au tableau 2. Aucun investissement de renouvellement n'est prévu sur l'horizon — la station ML et le serveur edge sont dimensionnés pour 100+ lignes.
+
+% =====================================================================
+\section{Tableau 2 — Tableau d'amortissement}
+% =====================================================================
+
+\begin{center}
+\small
+\begin{longtable}{l r r r r r r}
+\toprule
+ & \textbf{VALEUR} & \multicolumn{5}{c}{\textbf{AMORTISSEMENT}} \\
+\cmidrule(lr){3-7}
+\textbf{Poste} & \textbf{NOMINALE} & \textbf{N} & \textbf{N+1} & \textbf{N+2} & \textbf{N+3} & \textbf{N+4} \\
+\midrule
+\endhead
+
+Station de travail ML (GPU)        & 350\,000 &  70\,000 &  70\,000 &  70\,000 &  70\,000 &  70\,000 \\
+Serveur edge / on-prem             & 250\,000 &  50\,000 &  50\,000 &  50\,000 &  50\,000 &  50\,000 \\
+Équipement bureau                  & 200\,000 &  40\,000 &  40\,000 &  40\,000 &  40\,000 &  40\,000 \\
+Déplacements prospection           & 150\,000 &  30\,000 &  30\,000 &  30\,000 &  30\,000 &  30\,000 \\
+Frais juridiques                   & 100\,000 &  20\,000 &  20\,000 &  20\,000 &  20\,000 &  20\,000 \\
+Licences logicielles               &  50\,000 &  10\,000 &  10\,000 &  10\,000 &  10\,000 &  10\,000 \\
+\midrule
+\rowcolor{tabletot}\color{white}\bfseries
+TOTAL                              & 1\,100\,000 & 220\,000 & 440\,000 & 660\,000 & 880\,000 & 1\,100\,000 \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+% =====================================================================
+\section{Tableau 3 — Masse salariale}
+% =====================================================================
+
+\begin{center}
+\small
+\begin{longtable}{l r r r r r}
+\toprule
+ & \textbf{N} & \textbf{N+1} & \textbf{N+2} & \textbf{N+3} & \textbf{N+4} \\
+\midrule
+\endhead
+
+\rowcolor{tablesub}\multicolumn{6}{l}{\textbf{Directeur technique / CEO (fondateur)}} \\
+Nombre d'employés                  & 1 & 1 & 1 & 1 & 1 \\
+Salaire mensuel (DZD)              & 60\,000 & 63\,600 & 67\,416 & 71\,461 & 75\,749 \\
+\rowcolor{tablesub}\textbf{Masse salariale annuelle} & 720\,000 & 763\,200 & 808\,992 & 857\,532 & 908\,984 \\
+
+\midrule
+\rowcolor{tablesub}\multicolumn{6}{l}{\textbf{Lead ingénieur ML}} \\
+Nombre d'employés                  & 1 & 1 & 1 & 1 & 1 \\
+Salaire mensuel (DZD)              & 50\,000 & 53\,000 & 56\,180 & 59\,551 & 63\,124 \\
+\rowcolor{tablesub}\textbf{Masse salariale annuelle} & 600\,000 & 636\,000 & 674\,160 & 714\,610 & 757\,486 \\
+
+\midrule
+\rowcolor{tablesub}\multicolumn{6}{l}{\textbf{Business developer / commercial}} \\
+Nombre d'employés                  & 0 & 1 & 1 & 1 & 1 \\
+Salaire mensuel (DZD)              &  --   & 45\,000 & 47\,700 & 50\,562 & 53\,596 \\
+\rowcolor{tablesub}\textbf{Masse salariale annuelle} & 0 & 540\,000 & 572\,400 & 606\,744 & 643\,149 \\
+
+\midrule
+\rowcolor{tablesub}\multicolumn{6}{l}{\textbf{Ingénieur déploiement / support}} \\
+Nombre d'employés                  & 0 & 0 & 1 & 2 & 3 \\
+Salaire mensuel (DZD)              &  --   &  --   & 40\,000 & 42\,400 & 44\,944 \\
+\rowcolor{tablesub}\textbf{Masse salariale annuelle} & 0 & 0 & 480\,000 & 1\,017\,600 & 1\,617\,984 \\
+
+\midrule
+\rowcolor{tabletot}\color{white}\bfseries
+\textbf{EFFECTIF TOTAL}            & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} \\
+\rowcolor{tabletot}\color{white}\bfseries
+\textbf{MASSE SALARIALE GLOBALE}   & \textbf{1\,320\,000} & \textbf{1\,939\,200} & \textbf{2\,535\,552} & \textbf{3\,196\,486} & \textbf{3\,927\,603} \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\noindent\textit{Note :} Croissance salariale +6\,\%/an. Business developer recruté en N+1 (phase commerciale après pilote). Équipe déploiement/support à partir de N+2 pour gérer l'intégration chez le client. Pas de chargé de marketing dédié — la prospection directe industrielle est plus efficace que la communication grand public pour ce marché.
+
+% =====================================================================
+\section{Tableau 4 — Charges d'exploitation}
+% =====================================================================
+
+\begin{center}
+\small
+\begin{longtable}{l r r r r r}
+\toprule
+\textbf{Poste (DZD TTC)} & \textbf{N} & \textbf{N+1} & \textbf{N+2} & \textbf{N+3} & \textbf{N+4} \\
+\midrule
+\endhead
+
+Infrastructure technique (cloud, hébergement) & 240\,000 & 312\,000 & 405\,600 & 527\,280 & 685\,464 \\
+Fournitures et consommables de bureau        &  60\,000 &  78\,000 & 101\,400 & 131\,820 & 171\,366 \\
+Internet, électricité, maintenance           & 120\,000 & 156\,000 & 202\,800 & 263\,640 & 342\,732 \\
+Marketing et déplacements (salons Plast Alger, Foire d'Alger) & 300\,000 & 390\,000 & 507\,000 & 659\,100 & 856\,830 \\
+Salaires (cf.\ tableau 3)                    & 1\,320\,000 & 1\,939\,200 & 2\,535\,552 & 3\,196\,486 & 3\,927\,603 \\
+\midrule
+\rowcolor{tabletot}\color{white}\bfseries
+\textbf{CHARGES D'EXPLOITATION TOTALES}      & \textbf{2\,040\,000} & \textbf{2\,875\,200} & \textbf{3\,752\,352} & \textbf{4\,778\,326} & \textbf{5\,983\,995} \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\noindent\textit{Note :} les charges d'infrastructure suivent la croissance du nombre de lignes servies (cloud, stockage, support). Marketing concentré sur les salons professionnels nationaux (Plast Alger, Foire d'Alger) plutôt que publicité digitale.
+
+% =====================================================================
+\section{Tableau 5 — Chiffre d'affaires prévisionnel}
+% =====================================================================
+
+\begin{center}
+\small
+\begin{longtable}{l r r r r r}
+\toprule
+ & \textbf{N} & \textbf{N+1} & \textbf{N+2} & \textbf{N+3} & \textbf{N+4} \\
+\midrule
+\endhead
+
+\rowcolor{tablesub}\multicolumn{6}{l}{\textbf{Track A — Vente directe Algérie}} \\
+Nombre de lignes (clients directs) & 1 & 3 & 6 & 10 & 15 \\
+Prix unitaire (DZD/ligne/an)        & 100\,000 & 200\,000 & 200\,000 & 200\,000 & 200\,000 \\
+\rowcolor{tablesub}\textbf{CA Track A}  & 100\,000 & 600\,000 & 1\,200\,000 & 2\,000\,000 & 3\,000\,000 \\
+
+\midrule
+\rowcolor{tablesub}\multicolumn{6}{l}{\textbf{Track B — Revendeur / distribution}} \\
+Nombre de lignes (via partenaire)  & 0 & 0 & 5 & 30 & 80 \\
+Prix de gros (DZD/ligne/an, 50 %)  &  --   &  --   & 100\,000 & 100\,000 & 100\,000 \\
+\rowcolor{tablesub}\textbf{CA Track B}  & 0 & 0 & 500\,000 & 3\,000\,000 & 8\,000\,000 \\
+
+\midrule
+\rowcolor{tablesub}\multicolumn{6}{l}{\textbf{Total}} \\
+\rowcolor{tablesub}\textbf{Nombre total de lignes servies} & 1 & 3 & 11 & 40 & 95 \\
+\rowcolor{tablesub}\textbf{Taux de croissance du parc}      & --  & +200\,\% & +267\,\% & +264\,\% & +138\,\% \\
+
+\midrule
+\rowcolor{tabletot}\color{white}\bfseries
+\textbf{CHIFFRE D'AFFAIRES TOTAL}  & \textbf{100\,000} & \textbf{600\,000} & \textbf{1\,700\,000} & \textbf{5\,000\,000} & \textbf{11\,000\,000} \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\noindent\textit{Hypothèses :}
+\begin{itemize}\itemsep0pt
+  \item Pilote N à -50\,\% (100 k DZD) pour faciliter l'entrée chez un premier client algérien.
+  \item Track A : vente directe à 3-4 plasturgistes algériens par an (ENPC, CPG, Granulat+, Salemat, etc.).
+  \item Track B : signature d'un accord de distribution avec un intégrateur (automation, MES) en N+1, premières lignes en N+2. Prix de gros = 50\,\% du prix catalogue.
+  \item Rétention ligne supposée 95\,\%/an (désabonnements très faibles dans l'industriel).
+\end{itemize}
+
+% =====================================================================
+\section{Tableau 6 — Compte de résultat prévisionnel}
+% =====================================================================
+
+\begin{center}
+\small
+\begin{longtable}{l r r r r r}
+\toprule
+\textbf{En DZD} & \textbf{N} & \textbf{N+1} & \textbf{N+2} & \textbf{N+3} & \textbf{N+4} \\
+\midrule
+\endhead
+
+Vente de produits et services                &    100\,000 &    600\,000 &  1\,700\,000 &  5\,000\,000 & 11\,000\,000 \\
+\midrule
+\textbf{Production de l'exercice}            &    100\,000 &    600\,000 &  1\,700\,000 &  5\,000\,000 & 11\,000\,000 \\
+
+\midrule
+Achats consommés                             &      0      &      0      &       0      &       0      &       0      \\
+Services extérieurs et autres consommations  &    720\,000 &    936\,000 &  1\,216\,800 &  1\,581\,840 &  2\,056\,392 \\
+\rowcolor{tablesub}\textbf{Consommations intermédiaires} & 720\,000 & 936\,000 & 1\,216\,800 & 1\,581\,840 & 2\,056\,392 \\
+
+\midrule
+\rowcolor{tabletot}\color{white}\bfseries
+\textbf{VALEUR AJOUTÉE}                      &   -620\,000 &   -336\,000 &    483\,200 &  3\,418\,160 &  8\,943\,608 \\
+Charges de personnel (cf.\ tab.\ 3)         &  1\,320\,000 &  1\,939\,200 &  2\,535\,552 &  3\,196\,486 &  3\,927\,603 \\
+\midrule
+\rowcolor{tablesub}\textbf{Excédent brut d'exploitation}  & -1\,940\,000 & -2\,275\,200 & -2\,052\,352 &    221\,674 &  5\,016\,005 \\
+
+\midrule
+Autres produits d'exploitation               &      0      &      0      &       0      &       0      &       0      \\
+Autres charges d'exploitation               &      0      &      0      &       0      &       0      &       0      \\
+Dotations aux amortissements                &    220\,000 &    220\,000 &    220\,000 &    220\,000 &    220\,000 \\
+\midrule
+\rowcolor{tabletot}\color{white}\bfseries
+\textbf{RÉSULTAT D'EXPLOITATION}             & -2\,160\,000 & -2\,495\,200 & -2\,272\,352 &       1\,674 &  4\,796\,005 \\
+
+\midrule
+Produits financiers                         &      0      &      0      &       0      &       0      &       0      \\
+Charges financières                         &      0      &      0      &       0      &       0      &       0      \\
+\midrule
+\rowcolor{tablesub}\textbf{Résultat courant}                & -2\,160\,000 & -2\,495\,200 & -2\,272\,352 &       1\,674 &  4\,796\,005 \\
+
+\midrule
+Produits exceptionnels                      &      0      &      0      &       0      &       0      &      0      \\
+Charges exceptionnelles                     &      0      &      0      &       0      &      0      &      0      \\
+\midrule
+\rowcolor{tablesub}\textbf{RÉSULTAT DE L'EXERCICE}          & \textbf{-2\,160\,000} & \textbf{-2\,495\,200} & \textbf{-2\,272\,352} & \textbf{1\,674} & \textbf{4\,796\,005} \\
+
+\bottomrule
+\end{longtable}
+\end{center}
+
+\noindent\textit{Lecture :} année de rentabilité opérationnelle atteinte en \textbf{N+3} (résultat quasi nul) et \textbf{N+4} (résultat positif 4{,}8~M~DZD, soit environ 36\,000~USD). Burn cumulé N+1 à N+3 = 6{,}9~M~DZD ($\sim$52\,k~USD), compatible avec un financement 1275 (\og love money \fg{} + revolving credit ANADE).
+
+% =====================================================================
+\section{Synthèse — pour le dossier 1275}
+% =====================================================================
+
+\begin{itemize}\itemsep2pt
+  \item \textbf{Objet social :} conception, développement et commercialisation de logiciels d'aide à la supervision industrielle (capteurs logiciels / soft-sensors), avec une première application dans l'extrusion du PVC en Algérie.
+  \item \textbf{Ancrage technique :} mémoire de Master (université algérienne, 2025-2026) ayant produit un pipeline ML validé (F1=0{,}85 sur jeu de test, validé sur jeu industriel tiers).
+  \item \textbf{Modèle de revenu :} licence annuelle par ligne d'extrusion, 200\,k~DZD (1\,500~USD) — inférieur au coût d'un quart de travail d'un ingénieur qualité.
+  \item \textbf{Traction visée :} 1 pilote N, 3 clients payants N+1, 40 lignes servies N+3, 95 lignes N+4.
+  \item \textbf{Emplois créés :} 2 en N, 6 en N+4.
+  \item \textbf{Investissement initial :} 1{,}1~M~DZD ($\sim$8\,k~USD), intégralement couvert par le fondateur et le love money.
+  \item \textbf{Année de rentabilité :} N+3 (seuil opérationnel atteint, résultat positif en N+4).
+  \item \textbf{Demande 1275 :} label startup + accompagnement (mentorat, accès au marché public, exonérations fiscales 4 ans).
+\end{itemize}
+
+\end{document}

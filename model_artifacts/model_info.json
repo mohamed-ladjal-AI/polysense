@@ -1,0 +1,13 @@
+{
+  "model": "XGBoostClassifier",
+  "version": "1.0.0-thesis",
+  "source": "anis/trainer.py + save_model.py",
+  "f1_defaut_test": 0.8521,
+  "precision_defaut_test": 0.8276,
+  "rappel_defaut_test": 0.878,
+  "exactitude_test": 0.8958,
+  "n_features": 14,
+  "n_train": 960,
+  "n_test": 240,
+  "pct_defaut_test": 34.17
+}

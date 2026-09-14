@@ -1,0 +1,16 @@
+[
+  "n_vis",
+  "n_dosage",
+  "debit_masse",
+  "T_four_Z1",
+  "T_four_Z5",
+  "vide_four",
+  "couple_vis_pct",
+  "P_masse",
+  "T_masse",
+  "energie_specifique",
+  "gradient_T_fourreau",
+  "ratio_doseur_vis",
+  "fluctuation_P_masse",
+  "fluctuation_T_masse"
+]

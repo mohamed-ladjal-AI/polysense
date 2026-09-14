@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar for dark theme */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #475569 transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #475569;
+    border-radius: 3px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: #64748b;
+  }
+}
+
+/* Light Mode Overrides */
+html:not(.dark) body,
+html:not(.dark) #root {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+html:not(.dark) .bg-brand-dark {
+  background-color: #f8fafc !important;
+}
+
+html:not(.dark) .bg-brand-panel {
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+}
+
+html:not(.dark) .border-brand-border {
+  border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) .text-brand-text,
+html:not(.dark) .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .text-brand-muted {
+  color: #64748b !important;
+}
+
+html:not(.dark) input,
+html:not(.dark) select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Full Page & Print Media Optimization */
+@media print {
+  html, body, #root, div, main {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .scrollbar-thin {
+    overflow: visible !important;
+  }
+}
